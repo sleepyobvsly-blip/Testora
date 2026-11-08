@@ -4,7 +4,7 @@ from transformers import pipeline
 # Load the pretrained sentiment analysis model
 MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment-latest"
 
-print("Loading Sentra's sentiment analysis model...")
+print("Loading Testora's sentiment analysis model...")
 
 sentiment_analyzer = pipeline(
     "text-classification",

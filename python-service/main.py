@@ -4,30 +4,30 @@ from pydantic import BaseModel
 from transformers import pipeline
 
 app = FastAPI(
-    title="Sentra AI API",
+    title="Testora AI API",
     description="AI-powered sentiment analysis and feedback summarization",
     version="1.0.0"
 )
 
 # Load sentiment analysis model
-print("Loading Sentra sentiment model...")
+print("Loading Testora sentiment model...")
 
 sentiment_analyzer = pipeline(
     "text-classification",
     model="cardiffnlp/twitter-roberta-base-sentiment-latest"
 )
 
-print("Sentiment model is ready!")
+print("Testora Sentiment model is ready!")
 
 # Load summarization model
-print("Loading Sentra summarization model...")
+print("Loading Testora summarization model...")
 
 summarizer = pipeline(
     "summarization",
     model="sshleifer/distilbart-cnn-12-6"
 )
 
-print("Summarization model is ready!")
+print("Testora Summarization model is ready!")
 
 
 class FeedbackRequest(BaseModel):
@@ -41,7 +41,7 @@ class SummaryRequest(BaseModel):
 @app.get("/")
 def home():
     return {
-        "message": "Sentra AI API is running!"
+        "message": "Testora AI API is running!"
     }
 
 

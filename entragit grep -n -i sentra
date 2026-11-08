@@ -1,0 +1,78 @@
+[35mpython-service/main.py[m[36m:[m[32m7[m[36m:[m    title="[1;31mSentra[m AI API",
+[35mpython-service/main.py[m[36m:[m[32m13[m[36m:[mprint("Loading [1;31mSentra[m sentiment model...")
+[35mpython-service/main.py[m[36m:[m[32m23[m[36m:[mprint("Loading [1;31mSentra[m summarization model...")
+[35mpython-service/main.py[m[36m:[m[32m44[m[36m:[m        "message": "[1;31mSentra[m AI API is running!"
+[35mpython-service/sentiment_test.py[m[36m:[m[32m7[m[36m:[mprint("Loading [1;31mSentra[m's sentiment analysis model...")
+[35mresources/css/app.css[m[36m:[m[32m1[m[36m:[m@import './[1;31msentra[m.css';
+[35mresources/css/sentra.css[m[36m:[m[32m3[m[36m:[m   [1;31mSENTRA[m - MAIN DESIGN
+[35mresources/css/sentra.css[m[36m:[m[32m7[m[36m:[m    --[1;31msentra[m-purple: #6254d9;
+[35mresources/css/sentra.css[m[36m:[m[32m8[m[36m:[m    --[1;31msentra[m-purple-light: #f0eefb;
+[35mresources/css/sentra.css[m[36m:[m[32m9[m[36m:[m    --[1;31msentra[m-background: #f6f7fb;
+[35mresources/css/sentra.css[m[36m:[m[32m10[m[36m:[m    --[1;31msentra[m-white: #ffffff;
+[35mresources/css/sentra.css[m[36m:[m[32m11[m[36m:[m    --[1;31msentra[m-text: #202d46;
+[35mresources/css/sentra.css[m[36m:[m[32m12[m[36m:[m    --[1;31msentra[m-muted: #7c8ba5;
+[35mresources/css/sentra.css[m[36m:[m[32m13[m[36m:[m    --[1;31msentra[m-border: #e3e8f1;
+[35mresources/css/sentra.css[m[36m:[m[32m19[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m20[m[36m:[m    background: var(--[1;31msentra[m-background);
+[35mresources/css/sentra.css[m[36m:[m[32m28[m[36m:[m.[1;31msentra[m-sidebar {
+[35mresources/css/sentra.css[m[36m:[m[32m34[m[36m:[m    background: var(--[1;31msentra[m-white);
+[35mresources/css/sentra.css[m[36m:[m[32m35[m[36m:[m    border-right: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m41[m[36m:[m.[1;31msentra[m-logo {
+[35mresources/css/sentra.css[m[36m:[m[32m42[m[36m:[m    color: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m53[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m76[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m83[m[36m:[m    background: var(--[1;31msentra[m-purple-light);
+[35mresources/css/sentra.css[m[36m:[m[32m84[m[36m:[m    color: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m88[m[36m:[m    background: var(--[1;31msentra[m-purple-light);
+[35mresources/css/sentra.css[m[36m:[m[32m89[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m100[m[36m:[m    color: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m111[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m119[m[36m:[m.[1;31msentra[m-topbar {
+[35mresources/css/sentra.css[m[36m:[m[32m125[m[36m:[m    background: var(--[1;31msentra[m-white);
+[35mresources/css/sentra.css[m[36m:[m[32m126[m[36m:[m    border-bottom: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m143[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m151[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m156[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m167[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m173[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m182[m[36m:[m    background: var(--[1;31msentra[m-purple-light);
+[35mresources/css/sentra.css[m[36m:[m[32m183[m[36m:[m    color: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m200[m[36m:[m.[1;31msentra[m-main {
+[35mresources/css/sentra.css[m[36m:[m[32m205[m[36m:[m    background: var(--[1;31msentra[m-background);
+[35mresources/css/sentra.css[m[36m:[m[32m213[m[36m:[m    .[1;31msentra[m-sidebar {
+[35mresources/css/sentra.css[m[36m:[m[32m218[m[36m:[m    .[1;31msentra[m-logo {
+[35mresources/css/sentra.css[m[36m:[m[32m238[m[36m:[m    .[1;31msentra[m-topbar {
+[35mresources/css/sentra.css[m[36m:[m[32m256[m[36m:[m    .[1;31msentra[m-main {
+[35mresources/css/sentra.css[m[36m:[m[32m278[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m285[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m289[m[36m:[m.[1;31msentra[m-primary-button {
+[35mresources/css/sentra.css[m[36m:[m[32m294[m[36m:[m    background: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m305[m[36m:[m.[1;31msentra[m-primary-button:hover {
+[35mresources/css/sentra.css[m[36m:[m[32m309[m[36m:[m.[1;31msentra[m-primary-button span {
+[35mresources/css/sentra.css[m[36m:[m[32m330[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m336[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m365[m[36m:[m    background: var(--[1;31msentra[m-white);
+[35mresources/css/sentra.css[m[36m:[m[32m366[m[36m:[m    border: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m375[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m381[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m389[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m422[m[36m:[m    background: var(--[1;31msentra[m-white);
+[35mresources/css/sentra.css[m[36m:[m[32m423[m[36m:[m    border: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m434[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m439[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m492[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m497[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m514[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m541[m[36m:[m    border-top: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m544[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m559[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m564[m[36m:[m    color: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m575[m[36m:[m    border-bottom: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m617[m[36m:[m    color: var(--[1;31msentra[m-text);
+[35mresources/css/sentra.css[m[36m:[m[32m623[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m652[m[36m:[m    background: var(--[1;31msentra[m-white);
+[35mresources/css/sentra.css[m[36m:[m[32m653[m[36m:[m    border: 1px solid var(--[1;31msentra[m-border);
+[35mresources/css/sentra.css[m[36m:[m[32m675[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m682[m[36m:[m    color: var(--[1;31msentra[m-purple);
+[35mresources/css/sentra.css[m[36m:[m[32m704[m[36m:[m    color: var(--[1;31msentra[m-muted);
+[35mresources/css/sentra.css[m[36m:[m[32m723[m[36m:[m    border-bottom: 1px solid var(--[1;31msentra[m-bord
