@@ -2,12 +2,12 @@
 <aside class="sentra-sidebar">
     <!-- Logo -->
     <div class="sentra-logo">
-        sentra
+        Testora
     </div>
 
     <!-- Workspace -->
     <div class="workspace-selector">
-        <span>Sentra Workspace</span>
+        <span>Testora Workspace</span>
         <span class="workspace-arrow">⌄</span>
     </div>
 

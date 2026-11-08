@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="page-header">
         <div>
-            <span class="page-eyebrow">SENTRA ADMINISTRATION</span>
+            <span class="page-eyebrow">TESTORA ADMINISTRATION</span>
             <h1>Create Tester Account</h1>
             <p>Create a login account and assign testing projects.</p>
         </div>

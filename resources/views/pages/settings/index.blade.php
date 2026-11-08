@@ -2,7 +2,7 @@
 <x-app-layout>
     <div class="page-header">
         <div>
-            <span class="page-eyebrow">SENTRA PREFERENCES</span>
+            <span class="page-eyebrow">TESTORA PREFERENCES</span>
             <h1>Settings</h1>
             <p>Manage your workspace preferences and account settings.</p>
         </div>
@@ -39,7 +39,7 @@
             <div class="settings-card-icon">⚙</div>
             <div>
                 <h2>Workspace Settings</h2>
-                <p>Manage your Sentra workspace preferences.</p>
+                <p>Manage your Testora workspace preferences.</p>
             </div>
             <span class="settings-status">Coming soon</span>
         </div>

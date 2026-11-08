@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | Sentra</title>
+    <title>404 - Page Not Found | Testora</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet">
@@ -129,7 +129,7 @@
 
         <div class="brand">
             <div class="brand-icon">S</div>
-            Sentra
+            Testora
         </div>
 
         <div class="error-code">404</div>
@@ -146,7 +146,7 @@
             <p>
                 The requested page could not be found.
                 Please check the URL or return to your dashboard
-                to continue using Sentra.
+                to continue using Testora.
             </p>
         </div>
 
@@ -155,7 +155,7 @@
         </a>
 
         <div class="footer">
-            © {{ date('Y') }} Sentra. All rights reserved.
+            © {{ date('Y') }} Testora. All rights reserved.
         </div>
 
     </div>

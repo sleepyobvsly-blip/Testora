@@ -28,7 +28,7 @@
                     id="name"
                     name="name"
                     value="{{ old('name') }}"
-                    placeholder="e.g. Sentra Mobile App Testing"
+                    placeholder="e.g. Testora Mobile App Testing"
                     required
                 >
                 @error('name')

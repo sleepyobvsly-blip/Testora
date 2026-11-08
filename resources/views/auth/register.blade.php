@@ -10,7 +10,7 @@
                     S
                 </div>
                 <span class="text-2xl font-extrabold text-slate-800">
-                    Sentra
+                    Testora
                 </span>
             </div>
 
@@ -19,7 +19,7 @@
             </h1>
 
             <p class="text-sm text-slate-500 mt-2">
-                Get started with your Sentra workspace.
+                Get started with your Testora workspace.
             </p>
         </div>
 
@@ -155,7 +155,7 @@
 
         <!-- Footer -->
         <p class="text-center text-xs text-slate-400 mt-7">
-            © {{ date('Y') }} Sentra. All rights reserved.
+            © {{ date('Y') }} Testora. All rights reserved.
         </p>
 
     </div>

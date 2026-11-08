@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="page-header">
         <div>
-            <span class="page-eyebrow">SENTRA ADMINISTRATION</span>
+            <span class="page-eyebrow">TESTORA ADMINISTRATION</span>
             <h1>User Management</h1>
             <p>Create and manage Tester accounts and their project assignments.</p>
         </div>
@@ -22,7 +22,7 @@
         @php
             $credentials = session('temporary_credentials');
 
-            $copyText = "SENTRA - TESTER ACCOUNT\n\n"
+            $copyText = "TESTORA - TESTER ACCOUNT\n\n"
                 . "Name: {$credentials['name']}\n"
                 . "Email: {$credentials['email']}\n"
                 . "Temporary Password: {$credentials['password']}\n\n"

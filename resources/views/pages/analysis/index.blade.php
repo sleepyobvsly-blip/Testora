@@ -2,7 +2,7 @@
 <x-app-layout>
     <div class="page-header">
         <div>
-            <span class="page-eyebrow">SENTRA INTELLIGENCE</span>
+            <span class="page-eyebrow">TESTORA INTELLIGENCE</span>
             <h1>AI Analysis</h1>
             <p>Generate AI-powered summaries of your collected feedback.</p>
         </div>

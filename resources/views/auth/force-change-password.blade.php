@@ -7,7 +7,7 @@
 
         <p class="mt-2 text-sm text-gray-600">
             You're using a temporary password.
-            Please create a new password before continuing to Sentra.
+            Please create a new password before continuing to Testora.
         </p>
     </div>
 

@@ -2,7 +2,7 @@
 <x-app-layout>
     <div class="page-header">
         <div>
-            <span class="page-eyebrow">SENTRA ACCOUNT</span>
+            <span class="page-eyebrow">TESTORA ACCOUNT</span>
             <h1>Profile Settings</h1>
             <p>Manage your personal information and account security.</p>
         </div>

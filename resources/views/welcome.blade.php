@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentra | Understand Your Customers</title>
+    <title>Testora | Understand Your Customers</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet">
 
@@ -432,7 +432,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="{{ url('/') }}" class="brand">Sentra.</a>
+        <a href="{{ url('/') }}" class="brand">Testora.</a>
 
         <div class="nav-links">
             <a href="#home">Home</a>
@@ -460,7 +460,7 @@
             </h1>
 
             <p class="hero-description">
-                Sentra helps you understand customer opinions through
+                Testora helps you understand customer opinions through
                 AI-powered sentiment analysis and feedback summarization.
                 Discover what people think and make more informed decisions.
             </p>
@@ -517,15 +517,15 @@
 
     <section class="section about-section" id="about">
         <div class="section-heading">
-            <span>ABOUT SENTRA</span>
+            <span>ABOUT TESTORA</span>
             <h2>Understand What Your Customers Are Saying</h2>
         </div>
 
         <div class="about-content">
             <p>
-                Sentra is a feedback analysis system designed to help users
+                Testora is a feedback analysis system designed to help users
                 collect and understand customer opinions about products and
-                services. Through natural language processing, Sentra
+                services. Through natural language processing, Testora
                 classifies feedback by sentiment and generates summaries
                 that make responses easier to understand.
             </p>
@@ -534,7 +534,7 @@
 
     <section class="section" id="features">
         <div class="section-heading">
-            <span>WHAT SENTRA OFFERS</span>
+            <span>WHAT TESTORA OFFERS</span>
             <h2>Features That Make Feedback Easier to Understand</h2>
             <p>Organize customer responses and turn written opinions into useful information.</p>
         </div>
@@ -596,7 +596,7 @@
 
     <section class="cta-section">
         <h2>Make Feedback More Meaningful</h2>
-        <p>Start organizing and understanding customer opinions with Sentra.</p>
+        <p>Start organizing and understanding customer opinions with Testora.</p>
 
         @auth
             <a href="{{ route('dashboard') }}" class="primary-button">Go to Dashboard</a>
@@ -606,9 +606,9 @@
     </section>
 
     <footer>
-        <strong>Sentra.</strong>
+        <strong>Testora.</strong>
         <span>AI-Powered Feedback Analysis System</span>
-        <span>© {{ date('Y') }} Sentra. All rights reserved.</span>
+        <span>© {{ date('Y') }} Testora. All rights reserved.</span>
     </footer>
 
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>500 - Server Error | Sentra</title>
+    <title>500 - Server Error | Testora</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet">
@@ -129,7 +129,7 @@
 
         <div class="brand">
             <div class="brand-icon">S</div>
-            Sentra
+            Testora
         </div>
 
         <div class="error-code">500</div>
@@ -137,7 +137,7 @@
         <h1>Something Went Wrong</h1>
 
         <p class="description">
-            We're sorry! Sentra encountered an unexpected
+            We're sorry! Testora encountered an unexpected
             error while processing your request.
         </p>
 
@@ -155,7 +155,7 @@
         </a>
 
         <div class="footer">
-            © {{ date('Y') }} Sentra. All rights reserved.
+            © {{ date('Y') }} Testora. All rights reserved.
         </div>
 
     </div>
