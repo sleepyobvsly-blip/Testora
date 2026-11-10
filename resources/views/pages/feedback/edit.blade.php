@@ -5,15 +5,15 @@
             <p>Update an existing feedback response.</p>
         </div>
 
-        <a href="{{ route('feedback.show', $feedback) }}" class="back-link">
+        {{-- <a href="{{ route('feedback.show', $feedback) }}" class="sentra-primary-button">
             ← Back to Feedback
-        </a>
+        </a> --}}
     </div>
 
     <section class="projects-section create-project-section">
         <div class="section-heading">
             <div>
-                <h2>{{ $feedback->project->name }}</h2>
+                <h2>{{ $feedback->product->name }}</h2>
                 <p>Modify the submitted feedback below.</p>
             </div>
         </div>
@@ -23,10 +23,10 @@
             @method('PUT')
 
             <div class="form-group">
-                <label>Project</label>
+                <label>Product</label>
                 <input
                     type="text"
-                    value="{{ $feedback->project->name }}"
+                    value="{{ $feedback->product->name }}"
                     disabled
                 >
             </div>
@@ -51,7 +51,7 @@
                     Cancel
                 </a>
 
-                <button type="submit" class="primary-button">
+                <button type="submit" class="sentra-primary-button">
                     Save Changes
                 </button>
             </div>

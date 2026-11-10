@@ -1,34 +1,34 @@
 <x-app-layout>
     <div class="dashboard-heading">
         <div>
-            <h1>Edit Project</h1>
-            <p>Update your project information.</p>
+            <h1>Edit Product</h1>
+            <p>Update your product information.</p>
         </div>
 
-        <a href="{{ route('projects.show', $project) }}" class="back-link">
-            ← Back to Project
-        </a>
+        {{-- <a href="{{ route('products.show', $product) }}" class="sentra-primary-button">
+            ← Back to Product
+        </a> --}}
     </div>
 
     <section class="projects-section create-project-section">
         <div class="section-heading">
             <div>
-                <h2>Project Information</h2>
-                <p>Modify the details of your testing project.</p>
+                <h2>Product Information</h2>
+                <p>Modify the details of your product.</p>
             </div>
         </div>
 
-        <form action="{{ route('projects.update', $project) }}" method="POST">
+        <form action="{{ route('products.update', $product) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div class="form-group">
-                <label for="name">Project Name</label>
+                <label for="name">Product Name</label>
                 <input
                     type="text"
                     id="name"
                     name="name"
-                    value="{{ old('name', $project->name) }}"
+                    value="{{ old('name', $product->name) }}"
                     required
                 >
                 @error('name')
@@ -37,12 +37,12 @@
             </div>
 
             <div class="form-group">
-                <label for="category">Project Category</label>
+                <label for="category">Product Category</label>
                 <input
                     type="text"
                     id="category"
                     name="category"
-                    value="{{ old('category', $project->category) }}"
+                    value="{{ old('category', $product->category) }}"
                     required
                 >
                 @error('category')
@@ -51,27 +51,27 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Project Description</label>
+                <label for="description">Product Description</label>
                 <textarea
                     id="description"
                     name="description"
                     rows="5"
-                >{{ old('description', $project->description) }}</textarea>
+                >{{ old('description', $product->description) }}</textarea>
                 @error('description')
                     <p class="form-error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="status">Project Status</label>
+                <label for="status">Product Status</label>
                 <select id="status" name="status" required>
-                    <option value="draft" {{ old('status', $project->status) === 'draft' ? 'selected' : '' }}>
+                    <option value="draft" {{ old('status', $product->status) === 'draft' ? 'selected' : '' }}>
                         Draft
                     </option>
-                    <option value="collecting" {{ old('status', $project->status) === 'collecting' ? 'selected' : '' }}>
+                    <option value="collecting" {{ old('status', $product->status) === 'collecting' ? 'selected' : '' }}>
                         Collecting
                     </option>
-                    <option value="completed" {{ old('status', $project->status) === 'completed' ? 'selected' : '' }}>
+                    <option value="completed" {{ old('status', $product->status) === 'completed' ? 'selected' : '' }}>
                         Completed
                     </option>
                 </select>
@@ -81,11 +81,11 @@
             </div>
 
             <div class="form-actions">
-                <a href="{{ route('projects.show', $project) }}" class="cancel-button">
+                <a href="{{ route('products.show', $product) }}" class="cancel-button">
                     Cancel
                 </a>
 
-                <button type="submit" class="primary-button">
+                <button type="submit" class="sentra-primary-button">
                     Save Changes
                 </button>
             </div>

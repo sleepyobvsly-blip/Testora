@@ -14,14 +14,14 @@
 <header class="sentra-topbar">
 
     <!-- Search -->
-    <div class="topbar-search">
+    {{-- <div class="topbar-search">
         <span class="search-icon">⌕</span>
         <input
             type="text"
             placeholder="Search projects, feedback..."
             aria-label="Search projects and feedback"
         >
-    </div>
+    </div> --}}
 
     <!-- Right side -->
     <div class="topbar-right">

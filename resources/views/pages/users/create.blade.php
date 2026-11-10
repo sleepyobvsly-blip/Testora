@@ -3,13 +3,13 @@
         <div>
             <span class="page-eyebrow">TESTORA ADMINISTRATION</span>
             <h1>Create Tester Account</h1>
-            <p>Create a login account and assign testing projects.</p>
+            <p>Create a login account and assign testing products.</p>
         </div>
     </div>
 
     <div class="settings-card user-form-card">
 
-        <form method="POST" action="{{ route('users.store') }}">
+        <form method="POST" action="{{ route('users.store') }}" class="settings-grid">
             @csrf
 
             <div class="form-section">
@@ -48,51 +48,51 @@
             </div>
 
             <div class="form-section">
-                <h2>Project Assignment</h2>
-                <p>Select the testing projects this Tester will participate in.</p>
+                <h2>Product Assignment</h2>
+                <p>Select the testing products this Tester will participate in.</p>
 
-                @error('project_ids')
+                @error('product_ids')
                     <span class="field-error">{{ $message }}</span>
                 @enderror
 
-                @if ($projects->isEmpty())
+                @if ($products->isEmpty())
                     <p class="text-muted">
-                        You don't have any projects available for assignment yet.
+                        You don't have any products available for assignment yet.
                     </p>
                 @else
                     <div class="project-assignment-list">
-                        @foreach ($projects as $project)
+                        @foreach ($products as $product)
                             <label class="project-assignment-option">
                                 <input
                                     type="checkbox"
-                                    name="project_ids[]"
-                                    value="{{ $project->id }}"
-                                    {{ in_array($project->id, old('project_ids', [])) ? 'checked' : '' }}
+                                    name="product_ids[]"
+                                    value="{{ $product->id }}"
+                                    {{ in_array($product->id, old('product_ids', [])) ? 'checked' : '' }}
                                 >
 
                                 <span>
-                                    <strong>{{ $project->name }}</strong>
-                                    <small>{{ $project->category }} · {{ ucfirst($project->status) }}</small>
+                                    <strong>{{ $product->name }}</strong>
+                                    <small>{{ $product->category }} · {{ ucfirst($product->status) }}</small>
                                 </span>
                             </label>
                         @endforeach
                     </div>
 
-                    @error('project_ids.*')
+                    @error('product_ids.*')
                         <span class="field-error">{{ $message }}</span>
                     @enderror
                 @endif
             </div>
 
-            <div class="form-actions">
-                <a href="{{ route('users.index') }}" class="secondary-button">
+            <div class="form-actions" style="grid-column: 1 / -1;>
+                <a href="{{ route('users.index') }}" class="cancel-button">
                     Cancel
                 </a>
 
                 <button
                     type="submit"
-                    class="primary-button"
-                    {{ $projects->isEmpty() ? 'disabled' : '' }}
+                    class="sentra-primary-button"
+                    {{ $products->isEmpty() ? 'disabled' : '' }}
                 >
                     Create Tester Account
                 </button>

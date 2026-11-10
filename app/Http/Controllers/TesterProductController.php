@@ -5,27 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TesterProjectController extends Controller
+class TesterProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-    $projects = Auth::user()
-        ->assignedProjects()
-        ->withCount('feedback')
-        ->withExists([
-            'feedback as has_my_feedback' => function ($query) {
-                $query->where('user_id', Auth::id());
-            }
-        ])
-        ->latest()
-        ->get();
+        $products = Auth::user()
+            ->assignedProducts()
+            ->withCount('feedback')
+            ->withExists([
+                'feedback as has_my_feedback' => function ($query) {
+                    $query->where('user_id', Auth::id());
+                }
+            ])
+            ->latest()
+            ->get();
 
-    return view('pages.tester.projects.index', compact('projects'));
+        return view('pages.tester.products.index', compact('products'));
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -48,19 +47,19 @@ class TesterProjectController extends Controller
      */
     public function show(string $id)
     {
-         $project = Auth::user()
-        ->assignedProjects()
-        ->withCount('feedback')
-        ->findOrFail($id);
+        $product = Auth::user()
+            ->assignedProducts()
+            ->withCount('feedback')
+            ->findOrFail($id);
 
-    $myFeedback = $project->feedback()
-        ->where('user_id', Auth::id())
-        ->first();
+        $myFeedback = $product->feedback()
+            ->where('user_id', Auth::id())
+            ->first();
 
-    return view('pages.tester.projects.show', compact(
-        'project',
-        'myFeedback'
-    ));
+        return view('pages.tester.products.show', compact(
+            'product',
+            'myFeedback'
+        ));
     }
 
     /**

@@ -1,34 +1,34 @@
 <x-app-layout>
     <div class="dashboard-heading">
         <div>
-            <h1>Create New Project</h1>
-            <p>Set up a product or service testing project.</p>
+            <h1>Create New Product</h1>
+            <p>Set up a product or service testing product.</p>
         </div>
 
-        <a href="{{ route('projects.index') }}" class="back-link">
-            ← Back to Projects
-        </a>
+        {{-- <a href="{{ route('products.index') }}" class="sentra-primary-button">
+            ← Back to Products
+        </a> --}}
     </div>
 
     <section class="projects-section create-project-section">
         <div class="section-heading">
             <div>
-                <h2>Project Information</h2>
-                <p>Enter the basic details of your project.</p>
+                <h2>Product Information</h2>
+                <p>Enter the basic details of your product.</p>
             </div>
         </div>
 
-        <form action="{{ route('projects.store') }}" method="POST">
+        <form action="{{ route('products.store') }}" method="POST">
             @csrf
 
             <div class="form-group">
-                <label for="name">Project Name</label>
+                <label for="name">Product Name</label>
                 <input
                     type="text"
                     id="name"
                     name="name"
                     value="{{ old('name') }}"
-                    placeholder="e.g. Testora Mobile App Testing"
+                    placeholder="e.g. Local Milk"
                     required
                 >
                 @error('name')
@@ -37,13 +37,13 @@
             </div>
 
             <div class="form-group">
-                <label for="category">Project Category</label>
+                <label for="category">Product Category</label>
                 <input
                     type="text"
                     id="category"
                     name="category"
                     value="{{ old('category') }}"
-                    placeholder="e.g. Mobile Application"
+                    placeholder="e.g. Drink"
                     required
                 >
                 @error('category')
@@ -52,7 +52,7 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Project Description</label>
+                <label for="description">Product Description</label>
                 <textarea
                     id="description"
                     name="description"
@@ -65,12 +65,12 @@
             </div>
 
             <div class="form-actions">
-                <a href="{{ route('projects.index') }}" class="cancel-button">
+                <a href="{{ route('products.index') }}" class="cancel-button">
                     Cancel
                 </a>
 
-                <button type="submit" class="primary-button">
-                    Create Project
+                <button type="submit" class="sentra-primary-button">
+                    Create Product
                 </button>
             </div>
         </form>

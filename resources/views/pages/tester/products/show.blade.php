@@ -1,14 +1,14 @@
 
 <x-app-layout>
-    <div class="page-header">
+    <div class="dashboard-heading">
         <div>
             <span class="page-eyebrow">TESTER WORKSPACE</span>
-            <h1>{{ $project->name }}</h1>
-            <p>Review the project details before submitting your feedback.</p>
+            <h1>{{ $product->name }}</h1>
+            <p>Review the product details before submitting your feedback.</p>
         </div>
 
-        <a href="{{ route('tester.projects.index') }}" class="secondary-button">
-            Back to Projects
+        <a href="{{ route('tester.products.index') }}" class="sentra-primary-button">
+            ← Back to Products
         </a>
     </div>
 
@@ -16,37 +16,37 @@
         <div class="form-section">
             <span class="page-eyebrow">PROJECT INFORMATION</span>
 
-            <h2>{{ $project->name }}</h2>
+            <h2>{{ $product->name }}</h2>
 
-            <p>{{ $project->description ?: 'No project description available.' }}</p>
+            <p>{{ $product->description ?: 'No product description available.' }}</p>
         </div>
 
         <div class="project-item-meta">
             <div>
                 <strong>Category</strong>
-                <p>{{ $project->category }}</p>
+                <p>{{ $product->category }}</p>
             </div>
 
             <div>
-                <strong>Project Status</strong>
-                <p>{{ ucfirst($project->status) }}</p>
+                <strong>Product Status</strong>
+                <p>{{ ucfirst($product->status) }}</p>
             </div>
 
             <div>
                 <strong>Feedback Responses</strong>
-                <p>{{ $project->feedback_count }}</p>
+                <p>{{ $product->feedback_count }}</p>
             </div>
         </div>
 
         <div class="form-actions" style="margin-top: 25px;">
 
             @if ($myFeedback)
-                <a href="{{ route('feedback.edit', $myFeedback) }}" class="btn-primary">
+                <a href="{{ route('feedback.edit', $myFeedback) }}" class="sentra-primary-button">
                     Edit My Feedback
                 </a>
 
-            @elseif ($project->status === 'collecting')
-                <a href="{{ route('feedback.create', ['project_id' => $project->id]) }}" class="btn-primary">
+            @elseif ($product->status === 'collecting')
+                <a href="{{ route('feedback.create', ['product_id' => $product->id]) }}" class="sentra-primary-button">
                     Submit Feedback
                 </a>
 

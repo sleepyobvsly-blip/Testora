@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="page-header">
+    <div class="dashboard-heading">
         <div>
             <span class="page-eyebrow">TESTORA ADMINISTRATION</span>
             <h1>User Management</h1>
-            <p>Create and manage Tester accounts and their project assignments.</p>
+            <p>Create and manage Tester accounts and their product assignments.</p>
         </div>
 
-        <a href="{{ route('users.create') }}" class="primary-button">
+        <a href="{{ route('users.create') }}" class="sentra-primary-button">
             + Create Tester Account
         </a>
     </div>
@@ -103,7 +103,7 @@
                     <thead>
                         <tr>
                             <th>Tester</th>
-                            <th>Assigned Projects</th>
+                            <th>Assigned Products</th>
                             <th>Account Status</th>
                             <th>Created</th>
                             <th>Actions</th>
@@ -119,13 +119,13 @@
                                 </td>
 
                                 <td>
-                                    @forelse ($user->assignedProjects as $project)
+                                    @forelse ($user->assignedProducts as $product)
                                         <span class="project-tag">
-                                            {{ $project->name }}
+                                            {{ $product->name }}
                                         </span>
                                     @empty
                                         <span class="text-muted">
-                                            No projects assigned
+                                            No products assigned
                                         </span>
                                     @endforelse
                                 </td>

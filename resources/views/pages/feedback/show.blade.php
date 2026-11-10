@@ -5,7 +5,7 @@
             <p>Review an individual feedback response.</p>
         </div>
 
-        <a href="{{ route('feedback.index') }}" class="back-link">
+        <a href="{{ route('feedback.index') }}" class="sentra-primary-button">
             ← Back to Feedback
         </a>
     </div>
@@ -13,8 +13,8 @@
     <section class="projects-section create-project-section">
         <div class="section-heading">
             <div>
-                <h2>{{ $feedback->project->name }}</h2>
-                <p>{{ $feedback->project->category }}</p>
+                <h2>{{ $feedback->product->name }}</h2>
+                <p>{{ $feedback->product->category }}</p>
             </div>
 
             <span class="status-draft">
@@ -24,8 +24,8 @@
 
         <div class="project-information">
             <div class="information-item">
-                <label>Project</label>
-                <p>{{ $feedback->project->name }}</p>
+                <label>Product</label>
+                <p>{{ $feedback->product->name }}</p>
             </div>
 
             <div class="information-item">
@@ -38,23 +38,26 @@
             <label>Feedback Response</label>
             <p>{{ $feedback->feedback_text }}</p>
         </div>
+              
+        @if (Auth::user()->hasRole('tester'))
+            <div class="form-actions">
+                <a href="{{ route('feedback.edit', $feedback) }}"
+                class="sentra-primary-button">
+                    Edit Feedback
+                </a>
 
-        <div class="form-actions">
-            <a href="{{ route('feedback.edit', $feedback) }}" class="primary-button">
-                Edit Feedback
-            </a>
+                <form action="{{ route('feedback.destroy', $feedback) }}"
+                    method="POST"
+                    onsubmit="return confirm('Are you sure you want to delete this feedback?');">
 
-            <form action="{{ route('feedback.destroy', $feedback) }}"
-                method="POST"
-                onsubmit="return confirm('Are you sure you want to delete this feedback?');">
+                    @csrf
+                    @method('DELETE')
 
-                @csrf
-                @method('DELETE')
-
-                <button type="submit" class="delete-button">
-                    Delete Feedback
-                </button>
-            </form>
-        </div>
+                    <button type="submit" class="delete-button">
+                        Delete Feedback
+                    </button>
+                </form>
+            </div>
+        @endif
     </section>
 </x-app-layout>

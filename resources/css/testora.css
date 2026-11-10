@@ -1980,3 +1980,110 @@ body {
     color: #b91c1c;
     border: 1px solid #fecaca;
 }
+
+/* TESTER PRODUCT GRID */
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+    align-items: stretch;
+}
+
+/* PRODUCT CARDS */
+
+.project-item-card {
+    width: 100%;
+    min-height: 270px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+.project-item-card h3 {
+    color: var(--sentra-text);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 12px 0 8px;
+}
+
+.project-item-card p {
+    color: var(--sentra-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.project-item-card .sentra-primary-button {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+/* RESPONSIVE GRID */
+
+@media (max-width: 1000px) {
+    .project-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.feedback-group {
+    background: var(--sentra-white);
+    border: 1px solid var(--sentra-border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.feedback-group-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.feedback-group-heading::-webkit-details-marker {
+    display: none;
+}
+
+.feedback-group-heading h3 {
+    margin: 0 0 5px;
+    color: var(--sentra-text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.feedback-group-heading p {
+    margin: 0;
+    color: var(--sentra-muted);
+    font-size: 13px;
+}
+
+.feedback-dropdown-icon {
+    color: var(--sentra-muted);
+    transition: transform 0.2s ease;
+}
+
+.feedback-group[open] .feedback-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.feedback-group-content {
+    padding: 0 20px 12px;
+    border-top: 1px solid var(--sentra-border);
+}
+
+.feedback-group-content .project-row {
+    margin-bottom: 0;
+}

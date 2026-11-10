@@ -1,17 +1,18 @@
+
 <?php
 
-use App\Http\Controllers\TesterProjectController;
+use App\Http\Controllers\TesterProductController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\AnalysisController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Project;
+use App\Models\Product;
 use App\Models\Feedback;
-use App\Models\ProjectAnalysis;
+use App\Models\ProductAnalysis;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,8 +26,8 @@ Route::get('/dashboard', function () {
     // TESTER DASHBOARD
     if ($user->hasRole('tester')) {
 
-        // Get projects assigned to the Tester
-        $projects = $user->assignedProjects()
+        // Get products assigned to the Tester
+        $products = $user->assignedProducts()
             ->withCount('feedback')
             ->latest()
             ->get();
@@ -34,12 +35,12 @@ Route::get('/dashboard', function () {
         // Get feedback submitted by the Tester
         $feedback = Feedback::where('user_id', $userId);
 
-        $recentInsights = ProjectAnalysis::whereHas('project', function ($query) use ($userId) {
-    $query->whereHas('testers', function ($testerQuery) use ($userId) {
-        $testerQuery->where('users.id', $userId);
+        $recentInsights = ProductAnalysis::whereHas('product', function ($query) use ($userId) {
+            $query->whereHas('testers', function ($testerQuery) use ($userId) {
+                $testerQuery->where('users.id', $userId);
             });
         })
-            ->with('project')
+            ->with('product')
             ->latest()
             ->take(3)
             ->get();
@@ -49,21 +50,21 @@ Route::get('/dashboard', function () {
     // ADMIN DASHBOARD
     elseif ($user->hasRole('admin')) {
 
-        // Get projects owned by the Admin
-        $projects = Project::where('user_id', $userId)
+        // Get products owned by the Admin
+        $products = Product::where('user_id', $userId)
             ->withCount('feedback')
             ->latest()
             ->get();
 
-        // Get feedback belonging to the Admin's projects
-        $feedback = Feedback::whereHas('project', function ($query) use ($userId) {
+        // Get feedback belonging to the Admin's products
+        $feedback = Feedback::whereHas('product', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         });
 
-        $recentInsights = ProjectAnalysis::whereHas('project', function ($query) use ($userId) {
-    $query->where('user_id', $userId);
+        $recentInsights = ProductAnalysis::whereHas('product', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
         })
-            ->with('project')
+            ->with('product')
             ->latest()
             ->take(3)
             ->get();
@@ -73,7 +74,7 @@ Route::get('/dashboard', function () {
     }
 
     // Dashboard statistics
-    $totalProjects = $projects->count();
+    $totalProducts = $products->count();
 
     $totalFeedback = (clone $feedback)->count();
 
@@ -89,8 +90,8 @@ Route::get('/dashboard', function () {
         ->pluck('total', 'sentiment');
 
     return view('dashboard', compact(
-        'projects',
-        'totalProjects',
+        'products',
+        'totalProducts',
         'totalFeedback',
         'analyzedFeedback',
         'sentimentCounts',
@@ -98,6 +99,7 @@ Route::get('/dashboard', function () {
     ));
 
 })->middleware(['auth', 'password.changed'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
 
@@ -113,13 +115,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::middleware(['auth', 'password.changed'])->group(function () {
 
     // Admin-only routes
     Route::middleware('role:admin')->group(function () {
 
-        // Project Management
-        Route::resource('projects', ProjectController::class);
+        // Product Management
+        Route::resource('products', ProductController::class);
 
         // User Management
         Route::resource('users', UserManagementController::class)
@@ -129,24 +132,24 @@ Route::middleware(['auth', 'password.changed'])->group(function () {
         Route::get('/analysis', [AnalysisController::class, 'index'])
             ->name('analysis.index');
 
-        Route::post('/analysis/{project}', [AnalysisController::class, 'store'])
+        Route::post('/analysis/{product}', [AnalysisController::class, 'store'])
             ->name('analysis.store');
 
-            // Manage Tester Project Assignments
+        // Manage Tester Product Assignments
         Route::get('/users/{user}/assignments', [UserManagementController::class, 'editAssignments'])
             ->name('users.assignments');
 
         Route::put('/users/{user}/assignments', [UserManagementController::class, 'updateAssignments'])
             ->name('users.assignments.update');
-            
+
     });
 
-    // Tester Project Routes
-    Route::get('/my-projects', [TesterProjectController::class, 'index'])
-        ->name('tester.projects.index');
+    // Tester Product Routes
+    Route::get('/my-products', [TesterProductController::class, 'index'])
+        ->name('tester.products.index');
 
-    Route::get('/my-projects/{id}', [TesterProjectController::class, 'show'])
-        ->name('tester.projects.show');
+    Route::get('/my-products/{id}', [TesterProductController::class, 'show'])
+        ->name('tester.products.show');
 
     // Feedback Responses
     Route::resource('feedback', FeedbackController::class);
@@ -157,7 +160,6 @@ Route::middleware(['auth', 'password.changed'])->group(function () {
     })->name('settings.index');
 
 });
-
 
 
 require __DIR__.'/auth.php';

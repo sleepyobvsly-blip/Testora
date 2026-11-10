@@ -2,52 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
-use App\Models\ProjectAnalysis;
+use App\Models\Product;
+use App\Models\ProductAnalysis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class AnalysisController extends Controller
 {
-    
-   
-    
     public function index(Request $request)
     {
-        // Retrieve the user's projects
-        $projects = Project::where('user_id', Auth::id())
+        // Retrieve the user's products
+        $products = Product::where('user_id', Auth::id())
             ->withCount('feedback')
             ->latest()
             ->get();
 
-        // Find the selected project, if provided
-        $selectedProject = null;
+        // Find the selected product, if provided
+        $selectedProduct = null;
 
-        if ($request->filled('project_id')) {
-            $selectedProject = Project::where('user_id', Auth::id())
-                ->findOrFail($request->project_id);
+        if ($request->filled('product_id')) {
+            $selectedProduct = Product::where('user_id', Auth::id())
+                ->findOrFail($request->product_id);
         }
 
-        // If no project was selected, use the latest analyzed project
-        if (!$selectedProject) {
-            $latestAnalysis = ProjectAnalysis::whereHas('project', function ($query) {
+        // If no product was selected, use the latest analyzed product
+        if (!$selectedProduct) {
+            $latestAnalysis = ProductAnalysis::whereHas('product', function ($query) {
                 $query->where('user_id', Auth::id());
             })
                 ->latest()
                 ->first();
 
-            $selectedProject = $latestAnalysis?->project;
+            $selectedProduct = $latestAnalysis?->product;
         }
 
-        // If there is still no selected project, use the first available project
-        if (!$selectedProject) {
-            $selectedProject = $projects->first();
+        // If there is still no selected product, use the first available product
+        if (!$selectedProduct) {
+            $selectedProduct = $products->first();
         }
 
-        // Retrieve the latest analysis for the selected project
-        $latestAnalysis = $selectedProject
-            ? $selectedProject->analyses()->latest()->first()
+        // Retrieve the latest analysis for the selected product
+        $latestAnalysis = $selectedProduct
+            ? $selectedProduct->analyses()->latest()->first()
             : null;
 
         // Get sentiment counts
@@ -57,8 +54,8 @@ class AnalysisController extends Controller
             'negative' => 0,
         ]);
 
-        if ($selectedProject) {
-            $counts = $selectedProject->feedback()
+        if ($selectedProduct) {
+            $counts = $selectedProduct->feedback()
                 ->selectRaw('sentiment, COUNT(*) as total')
                 ->whereNotNull('sentiment')
                 ->groupBy('sentiment')
@@ -89,8 +86,8 @@ class AnalysisController extends Controller
         ]);
 
         return view('pages.analysis.index', compact(
-            'projects',
-            'selectedProject',
+            'products',
+            'selectedProduct',
             'latestAnalysis',
             'sentimentCounts',
             'sentimentPercentages',
@@ -98,16 +95,13 @@ class AnalysisController extends Controller
         ));
     }
 
-
-
-
-    public function store(Request $request, Project $project)
+    public function store(Request $request, Product $product)
     {
-        // Verify project ownership
-        abort_unless($project->user_id === Auth::id(), 403);
+        // Verify product ownership
+        abort_unless((int) $product->user_id === (int) Auth::id(), 403);
 
-        // Retrieve feedback for this project
-        $feedback = $project->feedback()
+        // Retrieve feedback for this product
+        $feedback = $product->feedback()
             ->whereNotNull('sentiment')
             ->get();
 
@@ -141,8 +135,8 @@ class AnalysisController extends Controller
             }
 
             // Save the generated analysis
-           $analysis = ProjectAnalysis::create([
-                'project_id' => $project->id,
+            $analysis = ProductAnalysis::create([
+                'product_id' => $product->id,
                 'total_feedback' => $feedback->count(),
                 'summary' => $summary,
             ]);

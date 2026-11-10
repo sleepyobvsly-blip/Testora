@@ -4,7 +4,7 @@
     @php
         $isTester = Auth::user()->hasRole('tester');
 
-        $collectingProjects = $projects->where('status', 'collecting')->count();
+        $collectingProducts = $products->where('status', 'collecting')->count();
 
         $pendingFeedback = $totalFeedback - $analyzedFeedback;
 
@@ -39,15 +39,15 @@
             <h1>Hello, {{ Auth::user()->name }}!</h1>
             <p>
                 {{ $isTester
-                    ? 'Your assigned projects and feedback activity.'
+                    ? 'Your assigned products and feedback activity.'
                     : 'Your testing pulse. Clearer feedback, more confident launches.' }}
             </p>
         </div>
 
         @if (!$isTester)
-            <a href="{{ route('projects.create') }}" class="sentra-primary-button">
+            <a href="{{ route('products.create') }}" class="sentra-primary-button">
                 <span>+</span>
-                Create New Project
+                Create New Product
             </a>
         @endif
     </section>
@@ -66,15 +66,15 @@
     <section class="dashboard-stats">
 
         <div class="stat-card">
-            <p>Total projects</p>
-            <h2>{{ number_format($totalProjects) }}</h2>
-            <span>{{ $collectingProjects }} actively collecting</span>
+            <p>Total products</p>
+            <h2>{{ number_format($totalProducts) }}</h2>
+            <span>{{ $collectingProducts }} actively collecting</span>
         </div>
 
         <div class="stat-card">
             <p>Feedback responses</p>
             <h2>{{ number_format($totalFeedback) }}</h2>
-            <span>Across your testing projects</span>
+            <span>Across your testing products</span>
         </div>
 
         <div class="stat-card">
@@ -100,7 +100,7 @@
             <div class="card-heading">
                 <h2>Sentiment at a glance</h2>
                 <p>
-                    {{ $isTester ? 'My feedback' : 'All projects' }}
+                    {{ $isTester ? 'My feedback' : 'All products' }}
                     · {{ number_format($analyzedFeedback) }} analyzed responses
                 </p>
             </div>
@@ -161,7 +161,7 @@
                     <span class="insight-icon insight-neutral">✦</span>
 
                     <div>
-                        <h3>{{ $insight->project->name }}</h3>
+                        <h3>{{ $insight->product->name }}</h3>
 
                         <p>
                             {{ \Illuminate\Support\Str::limit($insight->summary, 180) }}
@@ -179,7 +179,7 @@
                     <div>
                         <h3>No AI insights yet</h3>
                         <p>
-                            Generated project summaries will appear here
+                            Generated product summaries will appear here
                             once feedback analysis is completed.
                         </p>
                     </div>
@@ -190,19 +190,19 @@
 
     </section>
 
-    <!-- Recent Testing Projects -->
-    <section class="recent-projects-card">
+    <!-- Recent Testing Products -->
+    <section class="recent-products-card">
 
         <div class="projects-header">
             <div>
-                <h2>Recent testing projects</h2>
+                <h2>Recent testing products</h2>
                 <p>Private testing, before your next release.</p>
             </div>
 
             @if ($isTester)
-                <a href="{{ route('tester.projects.index') }}">View all projects →</a>
+                <a href="{{ route('tester.products.index') }}">View all products →</a>
             @else
-                <a href="{{ route('projects.index') }}">View all projects →</a>
+                <a href="{{ route('products.index') }}">View all products →</a>
             @endif
         </div>
 
@@ -211,7 +211,7 @@
 
                 <thead>
                     <tr>
-                        <th>PROJECT</th>
+                        <th>PRODUCT</th>
                         <th>STATUS</th>
                         <th>RESPONSES</th>
                         <th>CREATED</th>
@@ -221,35 +221,35 @@
 
                 <tbody>
 
-                    @forelse ($projects->take(5) as $project)
+                    @forelse ($products->take(5) as $product)
                         <tr>
                             <td>
                                 <div class="project-info">
                                     <div class="project-icon">◉</div>
                                     <div>
-                                        <strong>{{ $project->name }}</strong>
-                                        <span>{{ $project->category }}</span>
+                                        <strong>{{ $product->name }}</strong>
+                                        <span>{{ $product->category }}</span>
                                     </div>
                                 </div>
                             </td>
 
                             <td>
                                 <span class="project-status">
-                                    {{ ucfirst($project->status) }}
+                                    {{ ucfirst($product->status) }}
                                 </span>
                             </td>
 
                             <td>
-                                <strong>{{ number_format($project->feedback_count) }}</strong>
+                                <strong>{{ number_format($product->feedback_count) }}</strong>
                             </td>
 
-                            <td>{{ $project->created_at->format('M d, Y') }}</td>
+                            <td>{{ $product->created_at->format('M d, Y') }}</td>
 
                             <td>
                                 @if ($isTester)
-                                    <a href="{{ route('tester.projects.show', $project->id) }}">↗</a>
+                                    <a href="{{ route('tester.products.show', $product->id) }}">↗</a>
                                 @else
-                                    <a href="{{ route('projects.show', $project) }}">↗</a>
+                                    <a href="{{ route('products.show', $product) }}">↗</a>
                                 @endif
                             </td>
                         </tr>
@@ -257,8 +257,8 @@
                         <tr>
                             <td colspan="5" style="text-align: center; padding: 30px;">
                                 {{ $isTester
-                                ? 'No projects have been assigned to you yet.'
-                                : 'No projects yet. Create your first testing project!' }}
+                                ? 'No products have been assigned to you yet.'
+                                : 'No products yet. Create your first testing product!' }}
                             </td>
                         </tr>
                     @endforelse

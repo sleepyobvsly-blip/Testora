@@ -2,11 +2,11 @@
 <x-app-layout>
     <div class="dashboard-heading">
         <div>
-            <h1>Manage Project Assignments</h1>
-            <p>Update the projects assigned to {{ $user->name }}.</p>
+            <h1>Manage Product Assignments</h1>
+            <p>Update the products assigned to {{ $user->name }}.</p>
         </div>
 
-        <a href="{{ route('users.index') }}" class="secondary-button">
+        <a href="{{ route('users.index') }}" class="sentra-primary-button">
             ← Back to Users
         </a>
     </div>
@@ -14,8 +14,8 @@
     <section class="projects-section">
         <div class="section-heading">
             <div>
-                <h2>Available Projects</h2>
-                <p>Select the projects this Tester should have access to.</p>
+                <h2>Available Products</h2>
+                <p>Select the products this Tester should have access to.</p>
             </div>
         </div>
 
@@ -25,35 +25,35 @@
 
             @if ($errors->any())
                 <div class="error-message">
-                    Please check your project selections.
+                    Please check your product selections.
                 </div>
             @endif
 
             <div class="assignment-list">
-                @forelse ($projects as $project)
+                @forelse ($products as $product)
                     <label class="assignment-item">
                         <input
                             type="checkbox"
-                            name="project_ids[]"
-                            value="{{ $project->id }}"
-                            {{ in_array($project->id, old('project_ids', $assignedProjectIds)) ? 'checked' : '' }}
+                            name="product_ids[]"
+                            value="{{ $product->id }}"
+                            {{ in_array($product->id, old('product_ids', $assignedProductIds)) ? 'checked' : '' }}
                         >
 
                         <div>
-                            <strong>{{ $project->name }}</strong>
-                            <p>{{ $project->category }}</p>
+                            <strong>{{ $product->name }}</strong>
+                            <p>{{ $product->category }}</p>
                         </div>
                     </label>
                 @empty
-                    <p>No projects are available. Create a project first.</p>
+                    <p>No products are available. Create a product first.</p>
                 @endforelse
             </div>
 
-            @error('project_ids')
+            @error('product_ids')
                 <p class="error-text">{{ $message }}</p>
             @enderror
 
-            <button type="submit" class="primary-button">
+            <button type="submit" class="sentra-primary-button">
                 Save Assignments
             </button>
         </form>

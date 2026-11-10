@@ -5,26 +5,26 @@
             <p>Record feedback about a product or service being tested.</p>
         </div>
 
-        <a href="{{ route('feedback.index') }}" class="back-link">
+        {{-- <a href="{{ route('feedback.index') }}" class="sentra-primary-button">
             ← Back to Feedback
-        </a>
+        </a> --}}
     </div>
 
     <section class="projects-section create-project-section">
         <div class="section-heading">
             <div>
                 <h2>Feedback Information</h2>
-                <p>Select a project and enter the feedback response.</p>
+                <p>Select a product and enter the feedback response.</p>
             </div>
         </div>
 
-        @if ($projects->isEmpty())
+        @if ($products->isEmpty())
             <div class="empty-projects">
-                <h3>No active projects available</h3>
-                <p>You need a project with Collecting status before submitting feedback.</p>
+                <h3>No active products available</h3>
+                <p>You need a product with Collecting status before submitting feedback.</p>
 
-                <a href="{{ route('projects.index') }}" class="primary-button">
-                    View Projects
+                <a href="{{ route('products.index') }}" class="primary-button">
+                    View Products
                 </a>
             </div>
         @else
@@ -32,22 +32,22 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="project_id">Select Project</label>
+                    <label for="product_id">Select Product</label>
 
-                    <select id="project_id" name="project_id" required>
-                        <option value="">Choose a project</option>
+                    <select id="product_id" name="product_id" required>
+                        <option value="">Choose a product</option>
 
-                        @foreach ($projects as $project)
+                        @foreach ($products as $product)
                             <option
-                                value="{{ $project->id }}"
-                                {{ old('project_id') == $project->id ? 'selected' : '' }}
+                                value="{{ $product->id }}"
+                                {{ old('product_id') == $product->id ? 'selected' : '' }}
                             >
-                                {{ $project->name }}
+                                {{ $product->name }}
                             </option>
                         @endforeach
                     </select>
 
-                    @error('project_id')
+                    @error('product_id')
                         <p class="form-error">{{ $message }}</p>
                     @enderror
                 </div>
@@ -73,7 +73,7 @@
                         Cancel
                     </a>
 
-                    <button type="submit" class="primary-button">
+                    <button type="submit" class="sentra-primary-button">
                         Submit Feedback
                     </button>
                 </div>

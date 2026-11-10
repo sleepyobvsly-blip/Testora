@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Feedback extends Model
 {
     protected $fillable = [
-        'project_id',
+        'product_id',
         'user_id',
         'feedback_text',
         'sentiment',
     ];
 
-    public function project(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Product::class);
     }
 
     public function user(): BelongsTo

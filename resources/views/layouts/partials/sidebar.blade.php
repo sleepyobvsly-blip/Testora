@@ -21,18 +21,18 @@
         </a>
 
         @role('tester')
-            <a href="{{ route('tester.projects.index') }}"
-            class="sidebar-link {{ request()->routeIs('tester.projects.*') ? 'active' : '' }}">
+            <a href="{{ route('tester.products.index') }}"
+            class="sidebar-link {{ request()->routeIs('tester.products.*') ? 'active' : '' }}">
                 <span class="sidebar-icon">▦</span>
-                <span>My Assigned Projects</span>
+                <span>My Assigned Products</span>
             </a>
         @endrole
 
         @role('admin')
-        <a href="{{ route('projects.index') }}"
-            class="sidebar-link {{ request()->routeIs('projects.*') ? 'active' : '' }}">
+        <a href="{{ route('products.index') }}"
+            class="sidebar-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
             <span class="sidebar-icon">▢</span>
-            <span>Projects</span>
+            <span>Products</span>
         </a>
         @endrole
 

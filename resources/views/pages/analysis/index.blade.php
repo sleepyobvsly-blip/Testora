@@ -26,21 +26,21 @@
     <div class="analysis-card">
         <div class="analysis-card-header">
             <div>
-                <h2>Select a testing project</h2>
-                <p>Choose a project to analyze its collected feedback.</p>
+                <h2>Select a testing product</h2>
+                <p>Choose a product to analyze its collected feedback.</p>
             </div>
 
             <div class="analysis-icon">✦</div>
         </div>
 
-        @if ($projects->isEmpty())
+        @if ($products->isEmpty())
 
             <div class="empty-state">
-                <h3>No projects found</h3>
-                <p>Create a project first before generating an AI analysis.</p>
+                <h3>No products found</h3>
+                <p>Create a product first before generating an AI analysis.</p>
 
-                <a href="{{ route('projects.create') }}" class="primary-button">
-                    Create Project
+                <a href="{{ route('products.create') }}" class="primary-button">
+                    Create Product
                 </a>
             </div>
 
@@ -50,23 +50,23 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="project_id">Testing Project</label>
+                    <label for="product_id">Testing Product</label>
 
                     <select
-                        id="project_id"
-                        name="project_id"
+                        id="product_id"
+                        name="product_id"
                         required
-                        onchange="window.location.href='{{ route('analysis.index') }}?project_id=' + this.value"
+                        onchange="window.location.href='{{ route('analysis.index') }}?product_id=' + this.value"
                     >
-                        <option value="">Choose a project</option>
+                        <option value="">Choose a product</option>
 
-                        @foreach ($projects as $project)
+                        @foreach ($products as $product)
                             <option
-                                value="{{ $project->id }}"
-                                {{ $selectedProject && $selectedProject->id === $project->id ? 'selected' : '' }}
+                                value="{{ $product->id }}"
+                                {{ $selectedProduct && $selectedProduct->id === $product->id ? 'selected' : '' }}
                             >
-                                {{ $project->name }}
-                                ({{ $project->feedback_count }} feedback)
+                                {{ $product->name }}
+                                ({{ $product->feedback_count }} feedback)
                             </option>
                         @endforeach
 
@@ -95,7 +95,7 @@
         @endif
 
             {{-- Sentiment breakdown --}}
-        @if ($selectedProject)
+        @if ($selectedProduct)
 
             <div class="analysis-stats-grid">
 
@@ -122,7 +122,7 @@
         @endif
 
         {{-- Sentiment Distribution Chart --}}
-        @if ($selectedProject)
+        @if ($selectedProduct)
 
             <div class="analysis-chart-card">
                 <div class="analysis-chart-header">
@@ -130,7 +130,7 @@
                         <h2>Sentiment Distribution</h2>
                         <p>
                             Feedback sentiment for
-                            {{ $selectedProject->name }}
+                            {{ $selectedProduct->name }}
                         </p>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                         <h2>AI-Generated Summary</h2>
 
                         <p>
-                            {{ $latestAnalysis->project->name }}
+                            {{ $latestAnalysis->product->name }}
                         </p>
                     </div>
 
@@ -191,21 +191,21 @@
 
 
 <script>
-    const projectSelect = document.getElementById('project_id');
+    const productSelect = document.getElementById('product_id');
     const analysisForm = document.getElementById('analysisForm');
     const analyzeButton = document.getElementById('analyzeButton');
 
-    // Project selection and analysis button
-    if (projectSelect && analysisForm && analyzeButton) {
+    // Product selection and analysis button
+    if (productSelect && analysisForm && analyzeButton) {
 
-        analyzeButton.disabled = !projectSelect.value;
+        analyzeButton.disabled = !productSelect.value;
 
-        projectSelect.addEventListener('change', function () {
+        productSelect.addEventListener('change', function () {
             analyzeButton.disabled = !this.value;
         });
 
         analysisForm.addEventListener('submit', function () {
-            this.action = `/analysis/${projectSelect.value}`;
+            this.action = `/analysis/${productSelect.value}`;
 
             analyzeButton.disabled = true;
             analyzeButton.textContent = 'Analyzing feedback...';

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Project extends Model
+class Product extends Model
 {
     protected $fillable = [
         'user_id',
@@ -24,8 +24,12 @@ class Project extends Model
 
     public function testers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class)
-            ->withTimestamps();
+        return $this->belongsToMany(
+            User::class,
+            'product_user',
+            'product_id',
+            'user_id'
+        )->withTimestamps();
     }
 
     public function feedback(): HasMany
@@ -35,6 +39,6 @@ class Project extends Model
 
     public function analyses(): HasMany
     {
-        return $this->hasMany(ProjectAnalysis::class);
+        return $this->hasMany(ProductAnalysis::class);
     }
 }

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ProjectAnalysis extends Model
+class ProductAnalysis extends Model
 {
     protected $fillable = [
-        'project_id',
+        'product_id',
         'total_feedback',
         'summary',
     ];
 
-    public function project(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Product::class);
     }
 }
