@@ -1,4 +1,10 @@
 
+import os
+
+# Enable Hugging Face offline mode
+os.environ["HF_HUB_OFFLINE"] = "1"
+os.environ["TRANSFORMERS_OFFLINE"] = "1"
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
@@ -14,7 +20,8 @@ print("Loading Testora sentiment model...")
 
 sentiment_analyzer = pipeline(
     "text-classification",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest",
+    # local_files_only=True
 )
 
 print("Testora Sentiment model is ready!")
@@ -24,7 +31,8 @@ print("Loading Testora summarization model...")
 
 summarizer = pipeline(
     "summarization",
-    model="sshleifer/distilbart-cnn-12-6"
+    model="sshleifer/distilbart-cnn-12-6",
+    # local_files_only=True
 )
 
 print("Testora Summarization model is ready!")
