@@ -1,13 +1,10 @@
+
 <x-app-layout>
     <div class="dashboard-heading">
         <div>
             <h1>Edit Product</h1>
             <p>Update your product information.</p>
         </div>
-
-        {{-- <a href="{{ route('products.show', $product) }}" class="sentra-primary-button">
-            ← Back to Product
-        </a> --}}
     </div>
 
     <section class="projects-section create-project-section">
@@ -22,6 +19,7 @@
             @csrf
             @method('PUT')
 
+            <!-- Product Name -->
             <div class="form-group">
                 <label for="name">Product Name</label>
                 <input
@@ -36,6 +34,7 @@
                 @enderror
             </div>
 
+            <!-- Product Category -->
             <div class="form-group">
                 <label for="category">Product Category</label>
                 <input
@@ -50,6 +49,7 @@
                 @enderror
             </div>
 
+            <!-- Product Description -->
             <div class="form-group">
                 <label for="description">Product Description</label>
                 <textarea
@@ -62,24 +62,22 @@
                 @enderror
             </div>
 
+            <!-- Product Status (Read Only) -->
             <div class="form-group">
-                <label for="status">Product Status</label>
-                <select id="status" name="status" required>
-                    <option value="draft" {{ old('status', $product->status) === 'draft' ? 'selected' : '' }}>
-                        Draft
-                    </option>
-                    <option value="collecting" {{ old('status', $product->status) === 'collecting' ? 'selected' : '' }}>
-                        Collecting
-                    </option>
-                    <option value="completed" {{ old('status', $product->status) === 'completed' ? 'selected' : '' }}>
-                        Completed
-                    </option>
-                </select>
-                @error('status')
-                    <p class="form-error">{{ $message }}</p>
-                @enderror
+                <label>Current Product Status</label>
+
+                <div class="project-status">
+                    <span class="status-{{ $product->status }}">
+                        {{ ucfirst($product->status) }}
+                    </span>
+                </div>
+
+                <p class="text-xs text-slate-500 mt-2">
+                    Product status is managed automatically by Testora.
+                </p>
             </div>
 
+            <!-- Form Actions -->
             <div class="form-actions">
                 <a href="{{ route('products.show', $product) }}" class="cancel-button">
                     Cancel

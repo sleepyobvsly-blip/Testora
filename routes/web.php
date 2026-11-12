@@ -124,6 +124,22 @@ Route::middleware(['auth', 'password.changed'])->group(function () {
         // Product Management
         Route::resource('products', ProductController::class);
 
+
+        // Product Publishing Payment
+        Route::get('/products/{product}/payment', [ProductController::class, 'showPayment'])
+            ->name('products.payment');
+
+        Route::post('/products/{product}/payment/confirm', [ProductController::class, 'confirmPayment'])
+            ->name('products.payment.confirm');
+
+        // Product Testing Completion
+        Route::patch('/products/{product}/complete', [ProductController::class, 'complete'])
+            ->name('products.complete');
+
+        Route::patch('/products/{product}/reopen', [ProductController::class, 'reopen'])
+            ->name('products.reopen');
+
+
         // User Management
         Route::resource('users', UserManagementController::class)
             ->only(['index', 'create', 'store']);

@@ -220,6 +220,14 @@ class FeedbackController extends Controller
     {
         $this->authorizeFeedback($feedback);
 
+        // Prevent testers from deleting feedback on completed products
+        if (Auth::user()->hasRole('tester')) {
+            abort_unless(
+                $feedback->product->status === 'collecting',
+                403
+            );
+        }
+
         $feedback->delete();
 
         return redirect()

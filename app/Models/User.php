@@ -22,6 +22,8 @@ class User extends Authenticatable
         'password',
         'is_active',
         'must_change_password',
+        'registration_payment_status',
+        'registration_paid_at',
     ];
 
     protected $hidden = [

@@ -15,7 +15,18 @@ class Product extends Model
         'category',
         'description',
         'status',
+        'upload_fee',
+        'payment_status',
+        'paid_at',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'upload_fee' => 'decimal:2',
+            'paid_at' => 'datetime',
+        ];
+    }
 
     public function user(): BelongsTo
     {
