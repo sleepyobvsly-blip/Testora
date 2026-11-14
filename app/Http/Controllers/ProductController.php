@@ -34,7 +34,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'offering_type' => 'required|in:product,service,college_course',
             'name' => 'required|string|max:255',
+            'business_name' => 'required|string|max:255',
+            'business_address' => 'required|string|max:1000',
             'category' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
@@ -81,7 +84,10 @@ class ProductController extends Controller
         abort_unless($product->user_id === Auth::id(), 403);
 
         $validated = $request->validate([
+            'offering_type' => 'required|in:product,service,college_course',
             'name' => 'required|string|max:255',
+            'business_name' => 'required|string|max:255',
+            'business_address' => 'required|string|max:1000',
             'category' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
